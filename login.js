@@ -51,7 +51,7 @@ async function discover() {
                                     alert(language["wrongPassword"]);
                                 } else if (data) {
                                     setCookie('selectedProfile', data, 2);
-                                    window.location.href = "index.html";
+                                    window.location.href = "collectionner.html";
                                 } else {
                                     alert(language["InsertPassword"]);
                                 }
@@ -64,7 +64,7 @@ async function discover() {
                 } else {
                     profileDiv.addEventListener("click", function () {
                         setCookie('selectedProfile', profile.name, 2);
-                        window.location.href = "index.html";
+                        window.location.href = "collectionner.html";
                     })
                 }
                 profilesDiv.appendChild(profileDiv);

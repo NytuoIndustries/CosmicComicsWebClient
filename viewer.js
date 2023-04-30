@@ -1462,7 +1462,7 @@ window.addEventListener("keydown", (e) => {
 	} else if (e.code === "KeyF") {
 		fullscreen();
 	} else if (e.code === "8") {
-		window.location.href = "index.html";
+		window.location.href = "collectionner.html";
 	} else if (e.code === "KeyH") {
 		FixHeight();
 	} else if (e.code === "KeyL") {
