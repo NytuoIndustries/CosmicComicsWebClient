@@ -33,7 +33,7 @@ let searchtoggle = true;
 if (currentProfile.getToken == null) {
     window.location.href = "login.html";
 } else {
-    fetch(PDP+ "/profile/logcheck/" + currentProfile.getToken).then(function (response) {
+    fetch(PDP + "/profile/logcheck/" + currentProfile.getToken).then(function (response) {
         return response.text();
     }).then(async function (data) {
         if (data === "false") {
@@ -110,34 +110,34 @@ new bootstrap.Tooltip(document.getElementById("search"), {
 new bootstrap.Tooltip(document.getElementById("menuid"), {
     title: language["navigation"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_accountSystem"), {
+}); new bootstrap.Tooltip(document.getElementById("id_accountSystem"), {
     title: language["userAccount"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_createLib"), {
+}); new bootstrap.Tooltip(document.getElementById("id_createLib"), {
     title: language["addLib"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_opnfile"), {
+}); new bootstrap.Tooltip(document.getElementById("id_opnfile"), {
     title: language["open_file"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_addTrackedBook"), {
+}); new bootstrap.Tooltip(document.getElementById("id_addTrackedBook"), {
     title: language["TRACKER"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_bm"), {
+}); new bootstrap.Tooltip(document.getElementById("id_bm"), {
     title: language["Bookmark"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_settings"), {
+}); new bootstrap.Tooltip(document.getElementById("id_settings"), {
     title: language["settings"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_firstOfAll"), {
+}); new bootstrap.Tooltip(document.getElementById("id_firstOfAll"), {
     title: language["ExtractMissingImg"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_tips-btn"), {
+}); new bootstrap.Tooltip(document.getElementById("id_tips-btn"), {
     title: language["wiki"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_info"), {
+}); new bootstrap.Tooltip(document.getElementById("id_info"), {
     title: language["about"],
     placement: "bottom"
-});new bootstrap.Tooltip(document.getElementById("id_openDL"), {
+}); new bootstrap.Tooltip(document.getElementById("id_openDL"), {
     title: language["download"],
     placement: "bottom"
 });
@@ -172,8 +172,8 @@ document.getElementById("createdby").innerText = language["createdby"];
 document.getElementById("usewhat").innerHTML = language["technology_used"];
 document.getElementById("seewhere").innerHTML = language["github_promoted"];
 document.getElementById("translated").innerText = language["translation"];
-let betaTest= ["THEO LEPRINCE"]
-document.getElementById("beta_test").innerText = language["beta_test"]+betaTest.toString();
+let betaTest = ["THEO LEPRINCE"]
+document.getElementById("beta_test").innerText = language["beta_test"] + betaTest.toString();
 document.getElementById("project").innerHTML = language["license"];
 document.getElementById("close_about").innerText = language["close"];
 document.getElementById("id_openDLtxt").innerText = language["Downloader"];
@@ -267,7 +267,7 @@ const animateCSS = (element, animation, prefix = "animate__") =>
             resolve("Animation ended");
         }
 
-        node.addEventListener("animationend", handleAnimationEnd, {once: true});
+        node.addEventListener("animationend", handleAnimationEnd, { once: true });
     });
 
 /**
@@ -278,11 +278,11 @@ const animateCSS = (element, animation, prefix = "animate__") =>
  */
 async function getFromDB(dbname, request) {
     const option = {
-        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
             "request": request
         }, null, 2)
     };
-    return fetch(PDP+ '/DB/get/' + currentProfile.getToken + "/" + dbname, option).then(function (response) {
+    return fetch(PDP + '/DB/get/' + currentProfile.getToken + "/" + dbname, option).then(function (response) {
         return response.text();
     }).then(function (data) {
         return data;
@@ -299,7 +299,7 @@ async function getFromDB(dbname, request) {
  */
 async function InsertIntoDB(dbname, dbinfo, values) {
     const option = {
-        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
             "into": dbinfo, "val": values
         }, null, 2)
     };
@@ -312,7 +312,7 @@ async function InsertIntoDB(dbname, dbinfo, values) {
  * @returns {Promise<void>} The response
  */
 async function deleteLib(elElement) {
-    let confirmDelete = confirm(language["deleteaccount"]+ elElement["NAME"] + " ?");
+    let confirmDelete = confirm(language["deleteaccount"] + elElement["NAME"] + " ?");
     if (confirmDelete) {
         await fetch(PDP + '/DB/lib/delete/' + currentProfile.getToken + "/" + elElement["ID_LIBRARY"]).then(() => {
             alert(language["libraryDeleted"]);
@@ -335,7 +335,7 @@ function modifyLib(elElement) {
     document.getElementById("opt" + elElement["API_ID"]).selected = true;
     document.getElementById("sendlib").innerText = language["modifyLib"];
     document.getElementById("sendlib").onclick = function () {
-        return updateLibrary({'form': [document.getElementById('namelocation'), document.getElementById('locationa'), document.getElementById('providerID')]}, elElement["ID_LIBRARY"]);
+        return updateLibrary({ 'form': [document.getElementById('namelocation'), document.getElementById('locationa'), document.getElementById('providerID')] }, elElement["ID_LIBRARY"]);
     };
 }
 
@@ -378,7 +378,7 @@ function resetOverlay() {
             console.log(e);
         }
     }
-    document.getElementById("ContentView").innerHTML = "<h2>"+language["volumes"] +"</h2>";
+    document.getElementById("ContentView").innerHTML = "<h2>" + language["volumes"] + "</h2>";
 }
 
 
@@ -401,7 +401,7 @@ function resetLibModal() {
     document.getElementById("opt3").selected = false;
     document.getElementById("opt0").selected = true;
     document.getElementById("sendlib").onclick = function () {
-        return addLibrary({'form': [document.getElementById('namelocation'), document.getElementById('locationa'), document.getElementById('providerID')]});
+        return addLibrary({ 'form': [document.getElementById('namelocation'), document.getElementById('locationa'), document.getElementById('providerID')] });
     };
 }
 
@@ -676,7 +676,7 @@ function modifyConfigJson(tomod, mod) {
             config[tomod] = mod;
         }
         const option = {
-            method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify(config, null, 2)
+            method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(config, null, 2)
         };
         fetch('/config/writeConfig/' + currentProfile.getToken, option);
     }).catch(function (error) {
@@ -893,11 +893,11 @@ function openLibrary(folder, provider = 0) {
  * @return {{PATH: null, note: null, unread: null, creators: null, issueNumber: null, description: null, variants: null, characters: null, collections: null, lock: null, id: null, prices: null, collectedIssues: null, pageCount: null, read: null, URLs: null, last_page: null, format: null, reading: null, dates: null, NOM: null, folder: null, series: null, favorite: null, URLCover: null}} The Book Object
  */
 function generateBookTemplate(NOM = null, ID = null, NOTE = null, READ = null, READING = null,
-                              UNREAD = null, FAVORITE = null, LAST_PAGE = null, FOLDER = null,
-                              PATH = null, COVER = null, ISSUENUMBER = null, DESCRIPTION = null,
-                              FORMAT = null, PAGECOUNT = null, SITEURL = null, SERIES = null,
-                              STAFF = null, CHARACTERS = null, PRICES = null, DATES = null,
-                              COLLECTEDISSUES = null, COLLECTIONS = null, VARIANTS = null, LOCK = null) {
+    UNREAD = null, FAVORITE = null, LAST_PAGE = null, FOLDER = null,
+    PATH = null, COVER = null, ISSUENUMBER = null, DESCRIPTION = null,
+    FORMAT = null, PAGECOUNT = null, SITEURL = null, SERIES = null,
+    STAFF = null, CHARACTERS = null, PRICES = null, DATES = null,
+    COLLECTEDISSUES = null, COLLECTIONS = null, VARIANTS = null, LOCK = null) {
     return {
         "NOM": NOM,
         "id": ID,
@@ -955,7 +955,7 @@ function loadView(FolderRes, libraryPath, date = "", provider = providerEnum.MAN
             document.getElementById("readstat").innerText = JSON.parse(readBookNB)[0]["COUNT(*)"] + " / " + data.length + " volumes read";
             await getFromDB("Books", "* FROM Books WHERE PATH = '" + path + "'").then(async (resa) => {
                 let bookList = JSON.parse(resa);
-               let TheBook;
+                let TheBook;
                 if (bookList.length === 0) {
                     if (provider === providerEnum.Marvel) {
                         await new Marvel().InsertBook(realname, date, path).then(async (cdata) => {
@@ -965,18 +965,18 @@ function loadView(FolderRes, libraryPath, date = "", provider = providerEnum.MAN
                             }
                             if (cdata["data"]["total"] > 0) {
                                 cdata = cdata["data"]["results"][0];
-                                TheBook = new Book(cdata["id"],realname,cdata["thumbnail"].path + "/detail." + cdata["thumbnail"].extension,cdata["description"],cdata["creators"],cdata["characters"],cdata["urls"],null,0,0,1,0,0,0,path,cdata["issueNumber"],cdata["format"],cdata["pageCount"],cdata["series"],cdata["prices"],cdata["dates"],cdata["collectedIssues"], cdata["collections"], cdata["variants"], false)
+                                TheBook = new Book(cdata["id"], realname, cdata["thumbnail"].path + "/detail." + cdata["thumbnail"].extension, cdata["description"], cdata["creators"], cdata["characters"], cdata["urls"], null, 0, 0, 1, 0, 0, 0, path, cdata["issueNumber"], cdata["format"], cdata["pageCount"], cdata["series"], cdata["prices"], cdata["dates"], cdata["collectedIssues"], cdata["collections"], cdata["variants"], false)
                             } else {
-                                TheBook = new Book(null,realname,null,null,null,null,null,null,0,0,1,0,0,0,path,null,null,null,null,null,null,null,null, null, false)
+                                TheBook = new Book(null, realname, null, null, null, null, null, null, 0, 0, 1, 0, 0, 0, path, null, null, null, null, null, null, null, null, null, false)
                             }
                         });
                     } else if (provider === providerEnum.Anilist) {
                         await new Anilist().InsertBook(realname, path);
-                        TheBook = new Book(null,realname,null,null,null,null,null,null,0,0,1,0,0,0,path,null,null,null,null,null,null,null,null, null, false)
+                        TheBook = new Book(null, realname, null, null, null, null, null, null, 0, 0, 1, 0, 0, 0, path, null, null, null, null, null, null, null, null, null, false)
                     } else if (provider === providerEnum.MANUAL) {
                         console.log("manual");
                         InsertIntoDB("Books", "", `(?,'${null}','${realname}',null,${0},${0},${1},${0},${0},${0},'${path}','${null}','${null}','${null}','${null}',${null},'${null}','${null}','${null}','${null}','${null}','${null}','${null}','${null}','${null}',false)`)
-                        TheBook = new Book(null,realname,null,null,null,null,null,null,0,0,1,0,0,0,path,null,null,null,null,null,null,null,null, null, false)
+                        TheBook = new Book(null, realname, null, null, null, null, null, null, 0, 0, 1, 0, 0, 0, path, null, null, null, null, null, null, null, null, null, false)
                     } else if (provider === providerEnum.OL) {
                         await new OpenLibrary().InsertBook(realname, path).then(async (cdata) => {
                             console.log(cdata);
@@ -984,10 +984,10 @@ function loadView(FolderRes, libraryPath, date = "", provider = providerEnum.MAN
                                 throw new Error("no data");
                             }
                             if (cdata.hasOwnProperty("num_found")) {
-                                TheBook = new Book(null,realname,null,null,null,null,null,null,0,0,1,0,0,0,path,null,null,null,null,null,null,null,null, null, false)
+                                TheBook = new Book(null, realname, null, null, null, null, null, null, 0, 0, 1, 0, 0, 0, path, null, null, null, null, null, null, null, null, null, false)
                             } else {
                                 let cdataD = cdata["details"]
-                                TheBook = new Book(cdata["bib_key"],realname,cdata["thumbnail_url"],cdataD["description"],cdataD["authors"],null,cdataD["info_url"],null,0,0,1,0,0,0,path,null,cdataD["physical_format"],cdataD["number_of_pages"],null,null,cdata["publish_date"],null,null,null, false)
+                                TheBook = new Book(cdata["bib_key"], realname, cdata["thumbnail_url"], cdataD["description"], cdataD["authors"], null, cdataD["info_url"], null, 0, 0, 1, 0, 0, 0, path, null, cdataD["physical_format"], cdataD["number_of_pages"], null, null, cdata["publish_date"], null, null, null, false)
                             }
 
                         })
@@ -1019,16 +1019,16 @@ function loadView(FolderRes, libraryPath, date = "", provider = providerEnum.MAN
                                 } else {
                                     price = null;
                                 }
-                                TheBook = new Book(cdata["id"],realname,cover,cdata["volumeInfo"]["description"],cdata["volumeInfo"]["authors"],null,cdata["volumeInfo"]["infoLink"],null,0,0,1,0,0,0,path,null,cdata["volumeInfo"]["printType"],cdata["volumeInfo"]["pageCount"],null,price,cdata["volumeInfo"]["publishedDate"],null,null, null,false)
+                                TheBook = new Book(cdata["id"], realname, cover, cdata["volumeInfo"]["description"], cdata["volumeInfo"]["authors"], null, cdata["volumeInfo"]["infoLink"], null, 0, 0, 1, 0, 0, 0, path, null, cdata["volumeInfo"]["printType"], cdata["volumeInfo"]["pageCount"], null, price, cdata["volumeInfo"]["publishedDate"], null, null, null, false)
 
                             } else {
-                                TheBook = new Book(null,realname,null,null,null,null,null,null,0,0,1,0,0,0,path,null,null,null,null,null,null,null,null, null, false)
+                                TheBook = new Book(null, realname, null, null, null, null, null, null, 0, 0, 1, 0, 0, 0, path, null, null, null, null, null, null, null, null, null, false)
                             }
 
                         })
                     }
                     //TODO implement API HERE
-                }else{
+                } else {
                     let bookFromDB = bookList[0];
                     TheBook = new Book(bookFromDB["ID_book"], bookFromDB["NOM"], bookFromDB["URLCover"], bookFromDB["description"], bookFromDB["creators"], bookFromDB["characters"], bookFromDB["URLs"], bookFromDB["note"], bookFromDB["read"], bookFromDB["reading"], bookFromDB["unread"], bookFromDB["favorite"], bookFromDB["last_page"], bookFromDB["folder"], bookFromDB["PATH"], bookFromDB["issueNumber"], bookFromDB["format"], bookFromDB["pageCount"], bookFromDB["series"], bookFromDB["prices"], bookFromDB["dates"], bookFromDB["collectedIssues"], bookFromDB["collections"], bookFromDB["variants"], bookFromDB["lock"]);
                 }
@@ -1154,7 +1154,6 @@ async function loadContent(provider, FolderRes, libraryPath) {
                     console.log("DEBUG 3c");
                     n++;
                     const element = document.getElementById("ContainerExplorer");
-                    element.style.display = "none";
                     const divrating = document.createElement("div");
                     carddiv.appendChild(divrating);
                     element.appendChild(carddiv);
@@ -1422,7 +1421,7 @@ async function downloader() {
     let vol = document.getElementById("id_VOL_DL").value;
     console.log(url);
     const option = {
-        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
             "url": url, "name": name, "vol": vol
         }, null, 2)
     };
@@ -1458,7 +1457,7 @@ async function addLibrary(forma) {
  */
 async function updateLibrary(forma, id) {
     const option = {
-        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
             "name": forma.form[0].value, "path": forma.form[1].value, "api_id": forma.form[2].value
         }, null, 2)
     };
@@ -1587,7 +1586,7 @@ function returnToHome() {
     document.getElementById("overlay").style.display = "none";
     document.getElementById("overlay2").style.display = "none";
     document.getElementById("contentViewer").style.display = "none";
-    document.getElementById('home').innerHTML = "    <p>"+language["continue_reading"]+"</p>\n" + "    <div id=\"continueReadingHome\"></div>\n" + "    <p>"+language["favorite"]+"</p>\n" + "    <div id=\"myfavoriteHome\"></div>\n" + "    <p>"+language["recentlyAdded"]+"</p>\n" + "    <div id=\"recentlyAdded\"></div>\n" + "    <p>"+language["toRead"]+"</p>\n" + "    <div id=\"toRead\"></div>\n";
+    document.getElementById('home').innerHTML = "    <p>" + language["continue_reading"] + "</p>\n" + "    <div id=\"continueReadingHome\"></div>\n" + "    <p>" + language["favorite"] + "</p>\n" + "    <div id=\"myfavoriteHome\"></div>\n" + "    <p>" + language["recentlyAdded"] + "</p>\n" + "    <div id=\"recentlyAdded\"></div>\n" + "    <p>" + language["toRead"] + "</p>\n" + "    <div id=\"toRead\"></div>\n";
     HomeRoutine();
     document.getElementById('home').style.display = 'block';
     document.getElementById('home').style.fontSize = '16px';
@@ -1914,7 +1913,7 @@ async function createSeries(provider, path, libraryPath, res) {
                     for (let o = 0; o < el.length; o++) {
                         let l = new Card(null, null, null, el[o].id, el[o].coverImage.large, el[o].title.english + " / " + el[o].title.romaji + " / " + el[o].title.native).card;
                         l.addEventListener("click", () => {
-                           new API().rematch(el[o].id + "_" + provider, provider, "Series", res[0].ID_Series, true)
+                            new API().rematch(el[o].id + "_" + provider, provider, "Series", res[0].ID_Series, true)
                         })
                         rematchResult.appendChild(l);
                     }
@@ -1942,7 +1941,7 @@ async function createSeries(provider, path, libraryPath, res) {
         }
     }
     if (!APINOTFOUND) {
-        document.getElementById("provider_text").innerText = ((provider === providerEnum.Marvel) ? (language['providedBy']+" Marvel. © 2014 Marvel") : ((provider === providerEnum.Anilist) ? (language['providedBy']+" Anilist.") : ((provider === providerEnum.MANUAL) ? (language["notFromAPI"]) : ((provider === providerEnum.OL) ? (language['providedBy']+" OpenLibrary.") : ((provider === providerEnum.GBooks) ? (language['providedBy']+" Google Books.") : "")))));
+        document.getElementById("provider_text").innerText = ((provider === providerEnum.Marvel) ? (language['providedBy'] + " Marvel. © 2014 Marvel") : ((provider === providerEnum.Anilist) ? (language['providedBy'] + " Anilist.") : ((provider === providerEnum.MANUAL) ? (language["notFromAPI"]) : ((provider === providerEnum.OL) ? (language['providedBy'] + " OpenLibrary.") : ((provider === providerEnum.GBooks) ? (language['providedBy'] + " Google Books.") : "")))));
     } else {
         document.getElementById("provider_text").innerText = language["notFromAPI"];
     }
@@ -2022,9 +2021,9 @@ async function createSeries(provider, path, libraryPath, res) {
                 NameToFetchList.push("'" + el.name.replaceAll("'", "''") + "'");
             });
         } else if (provider === providerEnum.OL) {
-            alert("Open Library "+language["cannotFetchCharacters"]);
+            alert("Open Library " + language["cannotFetchCharacters"]);
         } else if (provider === providerEnum.GBooks) {
-            alert("Google Books "+language["cannotFetchCharacters"]);
+            alert("Google Books " + language["cannotFetchCharacters"]);
         }
         let NameToFetch = NameToFetchList.join(",");
         let container = document.createElement("div");
@@ -2402,7 +2401,7 @@ async function createSeries(provider, path, libraryPath, res) {
                 }
             });
             document.getElementById("Trending").innerText = language["trending"] + res[0]["TRENDING"];
-            document.getElementById("Volumes").innerText = language["numberOfVolume"]+ res[0]["volumes"];
+            document.getElementById("Volumes").innerText = language["numberOfVolume"] + res[0]["volumes"];
             document.getElementById("averageScore").innerText = res[0]["Score"];
             document.querySelectorAll(".circle-small .progress.one").forEach((el) => {
                 el.style.strokeDashoffset = Math.abs(100 - res[0]["Score"]);
@@ -2599,7 +2598,7 @@ document.getElementById("id_addTrackedBook").addEventListener("click", () => {
                     console.log(values);
 
                     columns.push("lock");
-                    await fetch(PDP+ "/DB/update", {
+                    await fetch(PDP + "/DB/update", {
                         method: "POST", headers: {
                             "Content-Type": "application/json"
                         }, body: JSON.stringify({
@@ -2783,7 +2782,7 @@ async function createDetails(TheBook, provider) {
                 if (cdata.hasOwnProperty("num_found")) {
                     for (let i = 0; i < cdata["num_found"]; i++) {
                         let cdataI = cdata["docs"][i];
-                        let l = new Card(null, null, null, cdataI["seed"][0], cdataI["cover_i"] !== undefined ? "https://covers.openlibrary.org/b/id/"+cdataI["cover_i"]+"-L.jpg":null, cdataI['title']).card;
+                        let l = new Card(null, null, null, cdataI["seed"][0], cdataI["cover_i"] !== undefined ? "https://covers.openlibrary.org/b/id/" + cdataI["cover_i"] + "-L.jpg" : null, cdataI['title']).card;
                         l.addEventListener("click", () => {
                             new API().rematch(cdataI.seed[0].split("/")[2] + "_" + provider, provider, "book", TheBook.ID_book, false)
                         })
@@ -2863,7 +2862,7 @@ async function createDetails(TheBook, provider) {
         console.log(values);
 
         columns.push("lock");
-        await fetch(PDP+ "/DB/update", {
+        await fetch(PDP + "/DB/update", {
             method: "POST", headers: {
                 "Content-Type": "application/json"
             }, body: JSON.stringify({
@@ -2880,7 +2879,7 @@ async function createDetails(TheBook, provider) {
     addToBreadCrumb(TheBook.NOM, () => {
         return createDetails(TheBook, provider);
     });
-    document.getElementById("provider_text").innerText = ((provider === providerEnum.Marvel) ? (language["providedBy"]+" Marvel. © 2014 Marvel") : ((provider === providerEnum.Anilist) ? (language["providedBy"]+" Anilist.") : ((provider === providerEnum.MANUAL) ? (language["notFromAPI"]) : ((provider === providerEnum.OL) ? (language["providedBy"]+" OpenLibrary.") : ((provider === providerEnum.GBooks) ? (language["providedBy"]+" Google Books.") : "")))));
+    document.getElementById("provider_text").innerText = ((provider === providerEnum.Marvel) ? (language["providedBy"] + " Marvel. © 2014 Marvel") : ((provider === providerEnum.Anilist) ? (language["providedBy"] + " Anilist.") : ((provider === providerEnum.MANUAL) ? (language["notFromAPI"]) : ((provider === providerEnum.OL) ? (language["providedBy"] + " OpenLibrary.") : ((provider === providerEnum.GBooks) ? (language["providedBy"] + " Google Books.") : "")))));
     document.getElementById("contentViewer").style.display = "block";
     document.getElementById("DLBOOK").addEventListener("click", function (e) {
         let path = TheBook.PATH;
@@ -2910,18 +2909,18 @@ async function createDetails(TheBook, provider) {
     document.getElementById("OtherTitles").innerText = "";
     document.getElementById("relations").innerText = "";
     if (TheBook.characters !== "null" && providerEnum.Marvel) {
-        document.getElementById("id").innerText = language["thisisa"] + TheBook.format + " "+language["of"] +" "+ TheBook.pageCount+" " + language["pages"]+"<br/>"+language["Thisispartofthe"] + JSON.parse(TheBook.series).name + "' " +language["series"];
+        document.getElementById("id").innerText = language["thisisa"] + TheBook.format + " " + language["of"] + " " + TheBook.pageCount + " " + language["pages"] + "<br/>" + language["Thisispartofthe"] + JSON.parse(TheBook.series).name + "' " + language["series"];
     } else {
         if (provider === providerEnum.Anilist) {
             document.getElementById("id").innerText = language["Thisispartofthe"] + TheBook.series.split("_")[2].replaceAll("$", " ") + "' series.";
         } else if (provider === providerEnum.Marvel) {
             document.getElementById("id").innerText = language["Thisispartofthe"] + JSON.parse(TheBook.series).name + "' series.";
         } else if (provider === providerEnum.MANUAL) {
-            document.getElementById("id").innerText = language["Thisispartofthe"]+ TheBook.series + "' series.";
+            document.getElementById("id").innerText = language["Thisispartofthe"] + TheBook.series + "' series.";
         } else if (provider === providerEnum.OL) {
             document.getElementById("id").innerText = language["Thisispartofthe"] + TheBook.series + "' series.";
         } else if (provider === providerEnum.GBooks) {
-            document.getElementById("id").innerText = language["this is a"] + TheBook.format + " "+language["of"] +" "+ TheBook.pageCount+" " + language["pages"]+"<br/>"+language["Thisispartofthe"] +  TheBook.series + "' " +language["series"];
+            document.getElementById("id").innerText = language["this is a"] + TheBook.format + " " + language["of"] + " " + TheBook.pageCount + " " + language["pages"] + "<br/>" + language["Thisispartofthe"] + TheBook.series + "' " + language["series"];
 
         }
     }
@@ -3104,7 +3103,7 @@ async function createDetails(TheBook, provider) {
         if (TheBook.favorite === 1) {
             document.getElementById("Status").innerText += language["favoriteParenthesis"];
         }
-        document.getElementById("readstat").innerHTML = "<input type=\"number\" step=\"1\" min=\"0\" id=\"readAddInput\">" + " / " + TheBook.pageCount + " "+ language["pagesRead"];
+        document.getElementById("readstat").innerHTML = "<input type=\"number\" step=\"1\" min=\"0\" id=\"readAddInput\">" + " / " + TheBook.pageCount + " " + language["pagesRead"];
         document.getElementById("readAddInput").value = TheBook.last_page;
         document.getElementById("readAddInput").max = TheBook.pageCount;
         document.getElementById("readAddInput").addEventListener("change", async function (e) {
@@ -3261,7 +3260,7 @@ async function createDetails(TheBook, provider) {
     }
     if (TheBook.prices !== "null" && TheBook.prices !== "" && TheBook.prices != null) {
         if (provider === providerEnum.Marvel) {
-            document.getElementById("price").innerHTML += language["prices"]+"<br/>";
+            document.getElementById("price").innerHTML += language["prices"] + "<br/>";
             for (let a = 0; a < JSON.parse(TheBook.prices).length; a++) {
                 console.log(JSON.parse(TheBook.prices)[a]);
                 document.getElementById("price").innerHTML += JSON.parse(TheBook.prices)[a].type.replace(/([A-Z])/g, ' $1').trim() + " : " + JSON.parse(TheBook.prices)[a].price + "<br/>";
@@ -3269,7 +3268,7 @@ async function createDetails(TheBook, provider) {
         }
     }
     if (TheBook.dates !== "null") {
-        document.getElementById("startDate").innerHTML = language["dates"]+"<br/>";
+        document.getElementById("startDate").innerHTML = language["dates"] + "<br/>";
         try {
 
             for (let b = 0; b < JSON.parse(TheBook.dates).length; b++) {
@@ -3296,7 +3295,7 @@ async function createDetails(TheBook, provider) {
 function createVariants(TheBook) {
     console.log(TheBook);
     let variants = JSON.parse(TheBook.variants);
-    document.getElementById("relations").appendChild(document.createTextNode(language["variantsList"]+" : "));
+    document.getElementById("relations").appendChild(document.createTextNode(language["variantsList"] + " : "));
     document.getElementById("relations").appendChild(document.createElement("br"));
     variants.forEach((el, index) => {
         document.getElementById("relations").appendChild(document.createTextNode(el.name));
@@ -3362,7 +3361,7 @@ function listenerClickSearch() {
  */
 async function downloadBook(path) {
     const option = {
-        method: 'POST', headers: {'Content-Type': 'application/json'}, body: JSON.stringify({
+        method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({
             path: path
         }, null, 2)
     };
@@ -3378,7 +3377,7 @@ async function downloadBook(path) {
  */
 async function logout() {
     const option = {
-        method: 'POST', headers: {'Content-Type': 'application/json'}
+        method: 'POST', headers: { 'Content-Type': 'application/json' }
     };
     await fetch(PDP + '/profile/logout/' + currentProfile.getToken, option).then(() => {
         window.location.href = 'login.html';
@@ -3424,43 +3423,43 @@ function AccountMenu() {
             },
             "listeners": {}
         },
-            {
-                "nom": language["Createanewuser"],
-                "attribs": {
-                    "data-bs-toggle": "modal",
-                    "data-bs-target": "#modifAccount"
-                },
-                "listeners": {
-                    "click": function () {
-                        document.getElementById("id_modifAccount").innerText = language["Createanewuser"];
-                        document.getElementById("delaccount").style.display = "none";
-                        document.getElementById("sendbdd").style.display = "none";
-                        document.getElementById("sendaccount").onclick = async function () {
-                            console.log("sendaccount");
-                            await currentProfile.createAccount();
-                        };
-                    }
-                }
+        {
+            "nom": language["Createanewuser"],
+            "attribs": {
+                "data-bs-toggle": "modal",
+                "data-bs-target": "#modifAccount"
             },
-            {
-                "nom": language["logout"],
-                "attribs": {},
-                "listeners": {
-                    "click": function () {
-                        logout();
-                    }
+            "listeners": {
+                "click": function () {
+                    document.getElementById("id_modifAccount").innerText = language["Createanewuser"];
+                    document.getElementById("delaccount").style.display = "none";
+                    document.getElementById("sendbdd").style.display = "none";
+                    document.getElementById("sendaccount").onclick = async function () {
+                        console.log("sendaccount");
+                        await currentProfile.createAccount();
+                    };
                 }
-            },
+            }
+        },
+        {
+            "nom": language["logout"],
+            "attribs": {},
+            "listeners": {
+                "click": function () {
+                    logout();
+                }
+            }
+        },
         ])
     document.body.appendChild(menu);
     menu.style.top = 70 + "px";
     menu.style.display = "flex";
     document.addEventListener("click", function (e) {
         if (e.target !== menu && e.target !== document.getElementById("id_accountSystem") && e.target !== document.getElementById("icon_id_accountSystem")) {
-            try{
-            document.body.removeChild(menu);
+            try {
+                document.body.removeChild(menu);
 
-            }catch (e) {
+            } catch (e) {
                 console.log(e)
             }
         }
@@ -3491,9 +3490,9 @@ fetch("/profile/custo/getNumber").then((res) => {
 
 
 
-document.getElementById("delaccount").onclick = ()=>{currentProfile.DeleteAccount()};
-document.getElementById("sendbdd").onclick = ()=>{currentProfile.DownloadBDD()};
-document.getElementById("sendaccount").onclick = ()=>{currentProfile.modifyAccount({'form':[document.getElementById('usernameManager').value,document.getElementById('passwordManager').value,document.getElementById('newImage')]});};
+document.getElementById("delaccount").onclick = () => { currentProfile.DeleteAccount() };
+document.getElementById("sendbdd").onclick = () => { currentProfile.DownloadBDD() };
+document.getElementById("sendaccount").onclick = () => { currentProfile.modifyAccount({ 'form': [document.getElementById('usernameManager').value, document.getElementById('passwordManager').value, document.getElementById('newImage')] }); };
 
 
 /**
@@ -3517,7 +3516,7 @@ function changeRating(table, where, value) {
                 "where": "ID_book"
             }, null, 2)
         };
-        fetch(PDP+ "/DB/update", options);
+        fetch(PDP + "/DB/update", options);
     } else if (table === "Series") {
         console.log(table, value);
         const options = {
@@ -3532,7 +3531,7 @@ function changeRating(table, where, value) {
                 "value": value
             }, null, 2)
         };
-        fetch(PDP+ "/DB/update", options);
+        fetch(PDP + "/DB/update", options);
     }
 }
 
